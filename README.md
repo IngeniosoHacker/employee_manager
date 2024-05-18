@@ -90,7 +90,92 @@ use cURL or Postman to interact with this endpoints
 
 ## Front-end
 
-The front-end of the application is built using Svelte and Tailwind CSS. The structure of the components follows the Atomic Design methodology, comprising atoms, molecules, and organisms.
+### Dependencies
+
+#### Installing Tailwind CSS in Svelte
+
+1. **Install Tailwind CSS and Dependencies**
+
+    ```bash
+    npm install -D tailwindcss postcss autoprefixer
+    ```
+
+2. **Initialize Tailwind CSS**
+
+    ```bash
+    npx tailwindcss init tailwind.config.cjs -p
+    ```
+
+3. **Configure Tailwind**
+
+    Update `tailwind.config.cjs`:
+
+    ```javascript
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: [
+        './src/**/*.{html,js,svelte,ts}',
+      ],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    };
+    ```
+
+4. **Create Tailwind CSS File**
+
+    Create `src/app.css` and add:
+
+    ```css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ```
+
+5. **Import Tailwind CSS in Svelte**
+
+    In `src/main.js` or `src/main.ts`, add:
+
+    ```javascript
+    import './app.css';
+    import App from './App.svelte';
+
+    const app = new App({
+      target: document.body,
+      props: {
+        name: 'world'
+      }
+    });
+
+    export default app;
+    ```
+
+6. **Update Svelte Configuration**
+
+    Ensure `svelte.config.js` supports PostCSS:
+
+    ```javascript
+    import adapter from '@sveltejs/adapter-auto';
+    import preprocess from 'svelte-preprocess';
+
+    export default {
+      kit: {
+        adapter: adapter()
+      },
+      preprocess: [
+        preprocess({
+          postcss: true
+        })
+      ]
+    };
+    ```
+
+7. **Start Development Server**
+
+    ```bash
+    npm run dev
+    ```
 
 ### Component Structure
 
