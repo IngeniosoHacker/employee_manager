@@ -9,9 +9,13 @@ class Employee {
     this.fechaNacimiento = data.fechaNacimiento;
     this.departamentoId = data.departamentoId;
   }
-
-  static async getAll() {
-    const query = 'SELECT * FROM Employees';
+  
+    static async getAll() {
+    const query = `
+      SELECT Employees.id, Employees.codigo, Employees.nombres, Employees.apellidos, Employees.fechaNacimiento, Departments.nombre as department
+      FROM Employees
+      JOIN Departments ON Employees.departamentoId = Departments.id
+    `;
     return new Promise((resolve, reject) => {
       db.query(query, (err, results) => {
         if (err) {
@@ -24,7 +28,7 @@ class Employee {
     });
   }
 
-  static async create(employee) {
+    static async create(employee) {
     const query = 'INSERT INTO Employees SET ?';
     return new Promise((resolve, reject) => {
       db.query(query, employee, (err, result) => {
