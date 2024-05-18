@@ -70,20 +70,20 @@ npm start
 ## Usage
 The application provides the following endpoints:
 
-`GET /api/employees`: Get all employees
+`GET /api/employees/listemp`: Get all employees
 
-`POST /api/employees`: Create a new employee
+`POST /api/employees/saveemp`: Create a new employee
 
-`PUT /api/employees/:id`: Update an existing employee
+`PUT /api/employees/updateemp:id`: Update an existing employee
 
-`DELETE /api/employees/:id`: Delete an employee
+`DELETE /api/employees/deleteemp:id`: Delete an employee
 
-`GET /api/departments`: Get all departments
+`GET /api/departments/listdeps`: Get all departments
 
-`POST /api/departments`: Create a new department
+`POST /api/departments/newdep`: Create a new department
 
-`PUT /api/departments/:id`: Update an existing department
+`PUT /api/departments/updatedep:id`: Update an existing department
 
-`DELETE /api/departments/:id`: Delete a department
+`DELETE /api/departments/deletedep:id`: Delete a department
 
 use cURL or Postman to interact with this endpoints
